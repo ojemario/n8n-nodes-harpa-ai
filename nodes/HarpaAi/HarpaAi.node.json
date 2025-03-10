@@ -1,0 +1,22 @@
+{
+  "node": "n8n-nodes-base.harpaAi",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": [
+    "Utility",
+    "Data & Storage",
+    "AI"
+  ],
+  "resources": {
+    "credentialDocumentation": [
+      {
+        "url": "https://harpa.ai/grid/grid-rest-api-reference"
+      }
+    ],
+    "primaryDocumentation": [
+      {
+        "url": "https://harpa.ai/grid/web-automation"
+      }
+    ]
+  }
+}

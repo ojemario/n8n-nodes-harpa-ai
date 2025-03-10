@@ -1,46 +1,113 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# n8n-nodes-harpa-ai
 
-# n8n-nodes-starter
+This is an n8n community node package for integrating with the Harpa AI browser automation API. It provides nodes to interact with Harpa AI's powerful browser automation capabilities directly from n8n workflows.
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](n8n.io). It includes the node linter and other dependencies.
+## Features
 
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
+This package provides the following n8n nodes:
 
-## Prerequisites
+### Harpa AI Node
 
-You need the following installed on your development machine:
+A regular node with multiple operations to interact with Harpa AI:
 
-* [git](https://git-scm.com/downloads)
-* Node.js and pnpm. Minimum version Node 18. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
-  ```
-  pnpm install n8n -g
-  ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
+- **Make API Call**: Perform arbitrary authorized API calls to the Harpa AI API
+- **Ping Browser Node**: Check if a browser node is online and ready
+- **Run AI Command**: Run AI-powered web automation, workflow, or command in your browser
+- **Scrape Web Page**: Turn a specified URL into markdown text or extract elements content by CSS/XPath/Text selectors
+- **Search the Web**: Search the web for a given query and get up to 8 search results
 
-## Using this starter
+### Harpa AI Trigger Node
 
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
+A trigger node that:
 
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
-   ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
-   ```
-3. Run `pnpm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `pnpm lint` to check for errors or `pnpm lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
+- **Watch Action Result**: Triggers when Harpa Chrome Extension node has responded to a run action request
 
-## More information
+## Installation
 
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
+Follow these instructions to install this node package in your n8n instance:
+
+### Community Nodes (Recommended)
+
+1. Open your n8n instance
+2. Go to Settings > Community Nodes
+3. Select Install
+4. Enter `n8n-nodes-harpa-ai` in "Enter npm package name"
+5. Agree to the risks of using community nodes and click "Install"
+
+### Manual Installation
+
+If you prefer manual installation, follow these steps:
+
+1. Go to your n8n user data directory, typically:
+   - Docker: `/home/node/.n8n`
+   - npm: `~/.n8n`
+2. Create a directory for custom nodes: `mkdir -p custom`
+3. Navigate to that directory: `cd custom`
+4. Clone the repository: `git clone https://github.com/yourusername/n8n-nodes-harpa-ai.git`
+5. Install dependencies: `cd n8n-nodes-harpa-ai && npm install`
+6. Build the code: `npm run build`
+7. Restart n8n
+
+## Credentials
+
+To use these nodes, you'll need to set up a Harpa AI API credential in n8n:
+
+1. Create a Harpa AI account at [https://harpa.ai](https://harpa.ai)
+2. Get your API key from the Harpa AI dashboard
+3. In n8n, go to Credentials > New > Harpa AI API
+4. Enter your API key and save
+
+## Node Usage
+
+### Harpa AI Node
+
+#### Make API Call
+
+Makes an arbitrary authorized API call to the Harpa AI API.
+
+- **URL**: The endpoint URL to call
+- **Method**: HTTP method (GET, POST, PUT, PATCH, DELETE)
+- **Headers**: Additional HTTP headers to include
+- **Query Parameters**: URL query parameters to include
+
+#### Ping Browser Node
+
+Sends a ping message to your Harpa browser extension to check if it's online and ready to run actions.
+
+- **Node ID**: (Optional) Target Node ID which should be pinged
+
+#### Run AI Command
+
+Runs AI-powered web automation, workflow, or command in your browser.
+
+- **Command Name**: Name of the command to run
+- **Command Inputs**: (Optional) Inputs for the command
+- **URL**: (Optional) Starting web page URL
+- **Result Parameter**: (Optional) Parameter to use as the result
+
+#### Scrape Web Page
+
+Turns a specified URL into markdown text or extracts elements content by CSS/XPath/Text selectors.
+
+- **URL**: Web page URL to scrape for data
+- **Grab Selectors**: (Optional) CSS/XPath/Text selectors of elements to grab
+
+#### Search the Web
+
+Searches the web for the given query and returns up to 8 search results.
+
+- **Query**: Search query to perform
+
+### Harpa AI Trigger Node
+
+The trigger node provides a webhook URL that can be used with Harpa AI's result webhook feature. When Harpa AI completes an action, it will send the results to this webhook, triggering your n8n workflow.
+
+## Resources
+
+- [Harpa AI Website](https://harpa.ai)
+- [Harpa AI Grid API Reference](https://harpa.ai/grid/grid-rest-api-reference)
+- [Harpa AI Web Automation](https://harpa.ai/grid/web-automation)
 
 ## License
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+[MIT](LICENSE.md)

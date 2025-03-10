@@ -1,9 +1,13 @@
 {
-  "name": "n8n-nodes-<...>",
+  "name": "n8n-nodes-harpa-ai",
   "version": "0.1.0",
-  "description": "",
+  "description": "n8n node to interact with Harpa AI's browser automation API",
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node-package",
+    "harpa-ai",
+    "browser-automation",
+    "web-scraping",
+    "ai"
   ],
   "license": "MIT",
   "homepage": "",
@@ -36,12 +40,11 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
+      "dist/credentials/HarpaAiApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/HarpaAi/HarpaAi.node.js",
+      "dist/nodes/HarpaAiTrigger/HarpaAiTrigger.node.js"
     ]
   },
   "devDependencies": {
